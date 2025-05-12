@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pixelplay</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="icon" href="gym logo.jpeg">
+</head>
+<body>
+<!-- Section Switcher -->
+<div class="section-buttons">
+  <button onclick="showSection('part1')">Image grid view</button>
+  <button onclick="showSection('part2')">Flip an image</button>
+  <button onclick="showSection('part3')">3d flip image</button>
+</div>
+
+<!-- Header -->
+<div class="header" id="myHeader">
+  <h1>Pixelplay </h1>
+  <p>Click on the buttons to change the grid view.</p>
+  <button class="btn active" onclick="one()">1</button>
+  <button class="btn" onclick="two()">2</button>
+  <button class="btn" onclick="four()">4</button>
+</div>
+
+<!-- Section Part 1: Image Grid -->
+<section id="part1">
+  <div class="row"> 
+    <div class="column">
+      <img src="slide11.jpeg" alt="Image">
+      <img src="slide22.jpeg" alt="Image">
+      <img src="slide33.jpeg" alt="Image">
+      <img src="slide44.jpeg" alt="Image">
+      <img src="slide55.jpeg" alt="Image">
+      <img src="sldie66.jpeg" alt="Image">
+      <img src="newtraine1.jpg" alt="Image">
+    </div>
+    <div class="column">
+      <img src="newtraine3.jpg" alt="Image">
+      <img src="blackgym.png" alt="Image">
+      <img src="gym logo.jpeg" alt="Image">
+      <img src="gym1.jpeg" alt="Image">
+      <img src="gym2.jpg" alt="Image">
+      <img src="iam here to rule.jpeg" alt="Image">
+    </div>  
+    <div class="column">
+      <img src="Mushroom Risotto.jpg" alt="Image">
+      <img src="orange juice.jpg" alt="Image">
+      <img src="spaghetti Carbonara.jpg" alt="Image">
+      <img src="bruschetta.jpg" alt="Image">
+    </div>
+    <div class="column">
+      <img src="grilled steak.jpg" alt="Image">
+      <img src="vanillaicecream.jpg" alt="Image">
+      <img src="Truffle Alfredo Pasta.jpg" alt="Image">
+      <img src="slide44.jpeg" alt="Image">
+      <img src="slide55.jpeg" alt="Image">
+      <img src="sldie66.jpeg" alt="Image">
+    </div>
+  </div>
+</section>
+
+    <!-- Section Part 2: Image Flip -->
+<section id="part2" style="text-align: center; padding: 20px;">
+  <h2>Flip an Image</h2>
+  <p>Move your mouse over the image to flip it.</p>
+  <img src="gym logo.jpeg" alt="predator" width="400" height="300" >
+</section>
+
+<section id="part3">
+  <h2>3D Flip Image</h2>
+  <div class="flip-box">
+    <div class="flip-box-inner">
+      <div class="flip-box-front">
+        <img src="gym logo.jpeg" alt="Paris" style="width:300px;height:200px">
+      </div>
+      <div class="flip-box-back">
+        <h2>Wolf</h2>
+        <p>Wolves are complex, highly intelligent animals who are caring, playful, and above all devoted to family</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  var elements = document.getElementsByClassName("column");
+
+  function one() {
+    for (let i = 0; i < elements.length; i++) {
+      elements[i].style.flex = "100%";
+    }
+    updateActiveButton("one");
+  }
+
+  function two() {
+    for (let i = 0; i < elements.length; i++) {
+      elements[i].style.flex = "50%";
+    }
+    updateActiveButton("two");
+  }
+
+  function four() {
+    for (let i = 0; i < elements.length; i++) {
+      elements[i].style.flex = "25%";
+    }
+    updateActiveButton("four");
+  }
+
+  function updateActiveButton(button) {
+    var buttons = document.getElementsByClassName("btn");
+    for (let i = 0; i < buttons.length; i++) {
+      buttons[i].classList.remove("active");
+    }
+    document.querySelector(`button[onclick="${button}()"]`).classList.add("active");
+  }
+</script>
+<script>
+  function showSection(sectionId) {
+    var sections = document.querySelectorAll('section');
+    for (let section of sections) {
+      section.style.display = 'none';
+    }
+    document.getElementById(sectionId).style.display = 'block';
+  }
+
+  // Show Part 1 by default when the page loads
+  window.onload = function () {
+    showSection('part1');
+  };
+</script>
+<script>
+function showSection(sectionId) {
+  const sections = ['part1', 'part2', 'part3'];
+  const header = document.getElementById('myHeader');
+
+  // Show only the selected section
+  sections.forEach(id => {
+    document.getElementById(id).style.display = (id === sectionId) ? 'block' : 'none';
+  });
+
+  // Show header only if part1 is active (the image grid)
+  if (sectionId === 'part1') {
+    header.style.display = 'block';
+  } else {
+    header.style.display = 'none';
+  }
+}
+</script>
+</body>
+</html>
